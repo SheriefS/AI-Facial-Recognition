@@ -10,6 +10,8 @@ from data_preprocessing import preprocess_image
 # Import your model architecture
 from MainModel import MainModel  # Adjust as necessary for your model
 
+index_to_class = {0: 'Focused', 1: 'happy', 2: 'neutral', 3: 'surprise'}
+
 def load_model(model_path, device):
     model = MainModel().to(device)  # Initialize your model
     model.load_state_dict(torch.load(model_path, map_location=device))  # Load the saved model
@@ -48,8 +50,7 @@ def evaluate_on_dataset(model, data_loader, device):
 
 
 def predict_images_in_folder(model, folder_path, device):
-    # Make sure the folder path is correctly formatted
-    folder_path = os.path.abspath(folder_path)  # Converts to absolute path
+    
     
     # Check for image files in the specified directory
     image_files = [f for f in os.listdir(folder_path) 
@@ -74,8 +75,9 @@ def predict_images_in_folder(model, folder_path, device):
             output = model(image_tensor)
             prediction = torch.argmax(output, dim=1).item()
         
+        class_name = index_to_class[prediction]
         # Modify this to print class names if available
-        print(f"The prediction for filename: {image_file} is {prediction}")
+        print(f"The prediction for filename: {image_file} is {class_name}")
 
 ### Main Script Execution
 if __name__ == "__main__":

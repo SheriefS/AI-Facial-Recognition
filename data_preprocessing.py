@@ -75,6 +75,7 @@ def split_dataset(data, labels, test_size=0.15, val_size=0.1765, random_state=42
 
     return train_data, val_data, test_data, train_labels, val_labels, test_labels
 
+#function for processing images that are used for testing the prediction in evaluate_model_2.py
 def preprocess_image(image_path, img_size=(48, 48)):
     if not os.path.isfile(image_path):
         raise ValueError(f"File does not exist: {image_path}")

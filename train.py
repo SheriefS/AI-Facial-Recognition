@@ -44,7 +44,7 @@ else:
 
 train_data, val_data, test_data, train_labels, val_labels, test_labels = split_dataset(data, labels)
 
-# # Reshape data for compatibility with PyTorch (batch_size, channels, height, width)
+# # Reshape data for compatibility with PyTorch
 # train_data = train_data.reshape(-1, 1, 48, 48)
 # test_data = test_data.reshape(-1, 1, 48, 48)
 # val_data = val_data.reshape(-1, 1, 48, 48)
