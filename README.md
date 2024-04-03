@@ -34,7 +34,10 @@ Files Included and Use:
 
 8. Model Evaluation 2: model_evaluation_2.py This is focused on the evaluation and use of the main model alone. It will display the performance metrics of the model. In addition, any images can be added to the ./single_image. Running this script will return the prediction of the model on the image(s).
 
+An archive folder has the necessary *.pth files should you wish to replace the files in the main directory with new training model. It also contains 10 sample images for each class
+
 Google Drive Links:
-Image files: https://drive.google.com/file/d/1Qk80zRqhfx84j8voyI7swuuKOzuAaP5o/view?usp=sharing
+Zip with all dataset image files: https://drive.google.com/file/d/1Qk80zRqhfx84j8voyI7swuuKOzuAaP5o/view?usp=sharing
+Should you wish to use this, please ensure the path is respected from the folder running the python scripts as follows: ./images_AI_dataset/images/...
 preprocessed_data.pth: https://drive.google.com/file/d/1-mYvjQfjrzUoz6Wyd9dhF360QzcGbsNm/view?usp=sharing
    
