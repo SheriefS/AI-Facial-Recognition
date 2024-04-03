@@ -1,6 +1,7 @@
 # COMP472_Project
 
 Completed by: Sherief Soliman
+
 Student ID: 29248323
 
 The objective of this project is to develop a Deep Learning Convolutional Neural Network (CNN) using PyTorch that can analyze images of students in a classroom or online meeting setting and categorize them into distinct states or activities.
