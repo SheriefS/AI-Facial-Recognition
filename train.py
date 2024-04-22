@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader, TensorDataset
 import numpy as np
 import os
 from sklearn.preprocessing import LabelEncoder
-from data_preprocessing import load_and_preprocess_dataset, split_dataset
+from data_preprocessing import load_and_preprocess_dataset, split_dataset, plot_image_distribution
 from MainModel import MainModel
 from Variant1 import Variant1
 from Variant2 import Variant2
@@ -33,11 +33,20 @@ preprocessed_data_path = 'preprocessed_data.pth'
 if os.path.exists(preprocessed_data_path):
     # Load preprocessed data
     data, labels, class_names = load_preprocessed_data(preprocessed_data_path)
+    plot_image_distribution(labels, class_names)
 else:
     # Preprocess data
+    #choose a path to check bias and retrain model based on the level of Bias
+    #level 1 has 15% of the male images removed
+    #level 2 has 30% of the male images removed
+    #level 3 has 50% of the male images removed
+
     dataset_path = "images_AI_dataset/images/train"
-    max_samples_per_class = 800
-    data, labels, class_names = load_and_preprocess_dataset(dataset_path, max_samples_per_class)
+    #dataset_path = "images_AI_dataset_level_1/images/train"
+    #dataset_path = "images_AI_dataset_level_2/images/train"
+    #dataset_path = "images_AI_dataset_level_3/images/train"
+    max_samples_per_class = 1200
+    data, labels, class_names = load_and_preprocess_dataset(dataset_path)
     
     # Save preprocessed data for future use
     save_preprocessed_data(data, labels, class_names, preprocessed_data_path)
@@ -154,6 +163,6 @@ if __name__ == "__main__":
         raise ValueError("Invalid model variant selected. Choose 1 for MainModel, 2 for Variant1, or 3 for Variant2.")
 
 
-    num_epochs = 20
+    num_epochs = 30
     model_save_path = f"{model_class.__name__}.pth" 
     train_model(model, num_epochs, model_save_path)

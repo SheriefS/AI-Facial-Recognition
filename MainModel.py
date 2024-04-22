@@ -8,7 +8,7 @@ class MainModel(nn.Module):
     def __init__(self):
         super(MainModel, self).__init__()
         # Convolutional layers with Batch Normalization
-        self.layer1 = nn.Conv2d(1, 32, kernel_size=5, stride=1, padding=2)
+        self.layer1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=2)
         self.bn1 = nn.BatchNorm2d(32)
         self.layer2 = nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1)
         self.bn2 = nn.BatchNorm2d(64)
@@ -20,7 +20,7 @@ class MainModel(nn.Module):
         self.dropout = nn.Dropout(0.5)
 
         # Fully connected layers
-        self.fc1 = nn.Linear(128 * 6 * 6, 512)
+        self.fc1 = nn.Linear(128 * 7 * 7, 512)
         self.fc2 = nn.Linear(512, 128)
         self.fc3 = nn.Linear(128, num_classes)
 
@@ -34,7 +34,7 @@ class MainModel(nn.Module):
         #print("After layer3:", x.shape)
 
         # Flatten the output for the fully connected layers
-        x = x.view(-1, 128 * 6 * 6)
+        x = x.view(-1, 128 * 7 * 7)
 
         # Apply fully connected layers with ReLU, dropout, and output layer
         x = F.relu(self.fc1(x))
