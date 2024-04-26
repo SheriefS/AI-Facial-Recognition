@@ -5,6 +5,7 @@ import torch
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.utils import shuffle
+import matplotlib.pyplot as plt
 
 # Function to apply brightness adjustment and rotation augmentation
 def adjust_brightness(image, brightness_factor_range=(0.5, 2.0)):
@@ -18,7 +19,7 @@ def rotate_image(image, rotation_angle_range=(-10, 10)):
     return cv2.warpAffine(image, rotation_matrix, (cols, rows))
 
 # Function to load and preprocess dataset
-def load_and_preprocess_dataset(dataset_path, max_samples_per_class, img_size=(48, 48)):
+def load_and_preprocess_dataset(dataset_path, img_size=(48, 48)):
     classes = ['Focused', 'happy', 'neutral', 'surprise']
     data = []
     labels = []
@@ -28,7 +29,7 @@ def load_and_preprocess_dataset(dataset_path, max_samples_per_class, img_size=(4
         if not os.path.isdir(class_path):
             continue
 
-        images = os.listdir(class_path)[:max_samples_per_class]
+        images = os.listdir(class_path)
         for image_name in images:
             image_path = os.path.join(class_path, image_name)
             image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)  # Loading in grayscale
@@ -56,11 +57,10 @@ def load_and_preprocess_dataset(dataset_path, max_samples_per_class, img_size=(4
     # Shuffle data and labels together
     data, labels = shuffle(data, labels, random_state=42)
     
-    # # Initialize label encoder and encode labels
-    # label_encoder = LabelEncoder()
-    # encoded_labels = label_encoder.fit_transform(labels)
 
     return data, labels, classes
+
+
 
 def split_dataset(data, labels, test_size=0.15, val_size=0.1765, random_state=42):
     
@@ -90,3 +90,19 @@ def preprocess_image(image_path, img_size=(48, 48)):
     image = image / 255.0
     image = np.expand_dims(np.expand_dims(image, axis=0), axis=0)  # Add batch and channel dimensions
     return torch.tensor(image, dtype=torch.float)
+
+def plot_image_distribution(labels, class_names):
+    # Count the number of occurrences for each class in the labels array
+    from collections import Counter
+    label_counts = Counter(labels)
+
+    # Prepare data for plotting
+    frequencies = [label_counts[class_name] for class_name in class_names]
+    
+    # Plotting
+    plt.figure(figsize=(10, 6))
+    plt.bar(class_names, frequencies, color='skyblue')
+    plt.xlabel('Class Names')
+    plt.ylabel('Number of Images')
+    plt.title('Distribution of Images Per Class')
+    plt.show()
