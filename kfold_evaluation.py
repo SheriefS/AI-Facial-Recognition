@@ -38,7 +38,7 @@ def evaluate_model(model, data, labels, test_idx, device):
 
 if __name__ == "__main__":
     dataset_path = "images_AI_dataset/images/train"
-    data, labels, _ = load_and_preprocess_dataset(dataset_path, 800)
+    data, labels, _ = load_and_preprocess_dataset(dataset_path)
     kf = KFold(n_splits=10, shuffle=True, random_state=42)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
