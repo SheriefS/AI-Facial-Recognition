@@ -1,8 +1,6 @@
-# COMP472_Project
+# AI Facial Recognition Project
 
 Completed by: Sherief Soliman
-
-Student ID: 29248323
 
 The objective of this project is to develop a Deep Learning Convolutional Neural Network (CNN) using PyTorch that can analyze images of students in a classroom or online meeting setting and categorize them into distinct states or activities.
 links for the data sets used
@@ -44,22 +42,4 @@ Files Included and Use:
 13. Synthetic Data Generator: synthetic_data.py was written in case bias was located. This file was not used, but was submitted as a representation of how synthetic images may be generated from the existing images.
 
 An archive folder has the necessary *.pth files should you wish to replace the files in the main directory with new training model. It also contains 10 sample images for each class
-
-Google Drive Links:
-Zip with all dataset image files and saved models for evaluation: https://drive.google.com/file/d/1--OaHBl5g9FTuJfESEdoad1HYsUOc5VW/view?usp=sharing
-The folders within this zip contain the following:
-1. /images_AI_dataset_complete/... - Contains the complete dataset
-2. /images_AI_dataset/... - Contains the unaltered dataset used in training
-3. /images_AI_dataset_gender/... - Contains the dataset that is split by genderMode
-4. /images_AI_dataset_level_1/... - Contains the dataset with 15% of the male images removed
-5. /images_AI_dataset_level_2/... - Contains the dataset with 30% of the male images removed
-6. /images_AI_dataset_level_3/... - Contains the dataset with 50% of the male images removed
-7. /K-Fold Model/.. - Contains the *.pth and *.npy files for the k-fold cross validation evaluation
-8. /Gender Data Evaluation Split/.. - Contains the *.pth files used for the bias evaluation
-9. /Bias_Original/.. - Contains the preprocessed data for the trained main model which was done on the unaltered dataset. Move to root folder to evaluate main model. Replace existing file if prompted. Ensure Contents of /Gender Data Evaluation are also in root if evaluating using gender split data (i.e. running model_evaluation_gender.py)
-10. /Bias_Level_1/.. - Contains the preprocessed data for the trained main model which was done on the level 1 dataset. Move to root folder to evaluate main model. Replace existing file if prompted.Ensure Contents of /Gender Data Evaluation are also in root if evaluating using gender split data (i.e. running model_evaluation_gender.py)
-11. /Bias_Level_2/.. - Contains the preprocessed data for the trained main model which was done on the level 2 dataset. Move to root folder to evaluate main model. Replace existing file if prompted.Ensure Contents of /Gender Data Evaluation are also in root if evaluating using gender split data (i.e. running model_evaluation_gender.py)
-12. /Bias_Level_3/.. - Contains the preprocessed data for the trained main model which was done on the level 3 dataset. Move to root folder to evaluate main model. Replace existing file if prompted.Ensure Contents of /Gender Data Evaluation are also in root if evaluating using gender split data (i.e. running model_evaluation_gender.py)
-
-Should you wish to use this, please ensure the path is respected from the root folder running the python scripts as follows.
    
